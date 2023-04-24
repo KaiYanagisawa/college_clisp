@@ -1,0 +1,148 @@
+(1)
+    [1]> (setq list '(a b c))
+    (A B C)
+    [16]> (defun pal1 (list1) (append list1 (reverse list1)))
+    PAL1
+    [17]> (pal1 list1)
+    (A B C C B A)
+
+(2)
+    [18]> (defun rotator (list2) (append (last list2) (butlast list2)))
+    ROTATOR
+    [19]> (setq list2 '(a b c d))
+    (A B C D)
+    [20]> (rotator list2)
+    (D A B C)
+
+(3)
+    ------ ex3.lisp ------
+    (defun successor (elem list3) 
+        (cond 
+            ((not (member elem list3)) 'not-there)
+            ((eq elem (car (last list3))) 'no-successor)
+            (t (cadr (member elem list3)))
+        )
+    )
+    ----------------------
+    [53]> (load "ex3.lisp")
+    ;; Loading file ex3.lisp ...
+    ;; Loaded file ex3.lisp
+    #P"/Users/yanagisawakai/college2023_1/Information_Science_Course_Experiment/clisp/ex3.lisp"
+    [54]> (successor 'x '(w d e x e))
+    E
+    [55]> (successor 'x '(w d e))
+    NOT-THERE
+    [56]> (successor 'x '(w d e x))
+    NO-SUCCESSOR
+
+(4)
+    ------ ex4.lisp ------
+    (defun divisors (num)
+        (cond 
+            ((equal 0 (mod num 2)) (setq divisor (/ num 2)))
+            ((equal 1 (mod num 2)) (setq divisor (/ (+ num 1) 2)))
+        )
+        (setq divisors_list '())
+        (cond 
+            ((< 1 (abs num)) (setq divisors_list (cons num divisors_list)))
+        )
+        (loop
+            (cond 
+                ((< divisor 1) (return divisors_list))
+                ((equal 0 (mod num divisor)) (setq divisors_list (cons divisor divisors_list)))
+            )
+            (setq divisor (- divisor 1))
+        )
+    )
+    ----------------------
+    [18]> (load "ex4.lisp")
+    ;; Loading file ex4.lisp ...
+    ;; Loaded file ex4.lisp
+    #P"/Users/yanagisawakai/college2023_1/Information_Science_Course_Experiment/clisp/ex4.lisp"
+    [19]> (divisors 12)
+    (1 2 3 4 6 12)
+    [20]> (divisors 36)
+    (1 2 3 4 6 9 12 18 36)
+    [21]> (divisors 256)
+    (1 2 4 8 16 32 64 128 256)
+    [22]> (divisors 1)
+    (1)
+
+(5)
+
+(6)
+    ------ ex6.lisp ------
+    (defun myappend(lst1 lst2)
+        (setq tmp '())
+        (loop
+            (cond
+                ((null lst1) 
+                    (loop
+                        (cond
+                            ((null tmp) (return lst2))
+                        )
+                        (setq lst2 (cons (car tmp) lst2))
+                        (setq tmp (cdr tmp))
+                    )
+                    (return lst2)
+                )
+            )
+            (setq tmp (cons (car lst1) tmp)) 
+            (setq lst1 (cdr lst1))
+        )
+    )
+    ----------------------
+    [37]> (load "ex6.lisp")
+    ;; Loading file ex6.lisp ...
+    ;; Loaded file ex6.lisp
+    #P"/Users/yanagisawakai/college2023_1/Information_Science_Course_Experiment/clisp/ex6.lisp"
+    [38]> (myappend '(1 2 3 s s a) '(a c b s a))
+    (1 2 3 S S A A C B S A)
+    [39]> (myappend '(1 2 3) '(4 5 6 7))
+    (1 2 3 4 5 6 7)
+    [40]> (myappend '(a b c d) '(e f g h))
+    (A B C D E F G H)
+
+(7)
+    ------ ex7.lisp ------
+    (defun myreverse(lst)
+        (setq reverse_list '())
+        (loop
+            (cond 
+                ((null lst) (return reverse_list))
+            )
+            (setq reverse_list (cons (car lst) reverse_list))
+            (setq lst (cdr lst))
+        )
+    )
+    ----------------------
+    [41]> (load "ex7.lisp")
+    ;; Loading file ex7.lisp ...
+    ;; Loaded file ex7.lisp
+    #P"/Users/yanagisawakai/college2023_1/Information_Science_Course_Experiment/clisp/ex7.lisp"
+    [42]> (myreverse '(1 2 3 4))
+    (4 3 2 1)
+    [43]> (myreverse '(a b c d e))
+    (E D C B A)
+
+(8)
+    ------ ex8.lisp ------
+    (defun mylast(lst)
+        (setq tmp '())
+        (loop
+            (cond
+                ((null lst) (return (car tmp)))
+            )
+            (setq tmp (cons (car lst) tmp))
+            (setq lst (cdr lst))
+        )
+    )
+    ----------------------
+    [46]> (load "ex8.lisp")
+    ;; Loading file ex8.lisp ...
+    ;; Loaded file ex8.lisp
+    #P"/Users/yanagisawakai/college2023_1/Information_Science_Course_Experiment/clisp/ex8.lisp"
+    [47]> (mylast '(a b c s))
+    S
+    [48]> (mylast '(1 2 3))
+    3

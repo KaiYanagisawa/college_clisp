@@ -1,0 +1,10 @@
+(defun question (sentence)
+    (cond
+        ((member 'am sentence) (append '(am) (cdr list) '(?)))
+        ((and (equal (car list) 'is) (not (null (cdr list)))) (append '(is) (cdr list) '(?)))
+        ((and (equal (car list) 'are) (not (null (cdr list)))) (append '(are) (cdr list) '(?)))
+        ((and (equal (car list) 'was) (not (null (cdr list)))) (append '(was) (cdr list) '(?)))
+        ((and (equal (car list) 'were) (not (null (cdr list)))) (append '(were) (cdr list) '(?)))
+        ; (t 'invalid-input)
+    )
+)
