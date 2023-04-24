@@ -1,0 +1,32 @@
+（1）関数pal1は、実引数でリストを１つ受け取り、倍の長さの回文リストを作って返す。
+　　　例：(pal '(a b c))　は、(a b c c b a)を返す
+（2）関数rotatorは、実引数でリストを１つ受け取り、リストの要素を１要素分、
+　　 右に回転シフトしたリストを返す。
+　　　例：(rotator '(a b c d)) は、(d a b c)を返す
+（3）関数successor:２つの引数をとり、第2引数はリストである。
+　　 第1引数が第2引数の要素に含まれていれば、第2引数のリストの中で、
+　　 第1引数と同じ要素の次の要素を返す。ただし、第1引数と同じ要素が
+　　 リストの最後である場合には、no-successorを返す。
+　　 第1引数が第2引数に含まれていなければnot-thereと返す。
+　　　例：
+       (successor 'x '(w x y z)) --> y
+       (successor 'z '(w x y z)) --> no-successor
+       (successor 'q '(a b c)) --> not-there
+（4）関数divisorsは、実引数で整数を1つ受け取り、その整数の約数をすべて小さい順に
+　　 並べたリスト返す。ただし、整数nの約数を見つけるために行う除算の総数をできる
+　　 だけ少なくするように工夫すると良い。
+　　　例：
+       (divisors 12) → (1 2 3 4 6 12)
+       (divisors 36) → (1 2 3 4 6 9 12 18 36)
+       (divosors 256) → (1 2 4 8 16 32 64 128 256)
+       (divisors 1) → (1)
+（5）be動詞を使った肯定文を以下の例のようなリストの形で与えると、be動詞を
+　　 先頭に出した単純な疑問文を作る関数questionを定義しなさい。
+　　　例：
+        (question '(this is a simple lisp function))
+　　　　　　→　(is this a simple lisp function ?)
+        (question '(the letters were written by her))
+　　　　 　→　(were the letters written by her ?)
+(6) appendと同じ働きをする関数myappendを定義しなさい。
+(7) reverseと同じ働きをする関数myreverseを定義しなさい。
+(8) lastと同じ働きをする関数mylastを定義しなさい。
